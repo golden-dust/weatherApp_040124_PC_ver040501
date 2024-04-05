@@ -14,9 +14,9 @@ class WeatherApp(QMainWindow, form_class):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
-        self.setWindowTitle("전국 날씨 검색 프로그램")
+        self.setWindowTitle("날씨 검색 프로그램")
         self.setWindowIcon(QIcon("img/Image20240405114239.png"))
-        self.statusBar().showMessage("WEATHER SEARCH APP VER 0.6")
+        self.statusBar().showMessage("WEATHER SEARCH APP VER 0.7")
 
         self.search_btn.clicked.connect(self.search_weather)
 
@@ -26,20 +26,21 @@ class WeatherApp(QMainWindow, form_class):
         weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
         weatherSoup = BeautifulSoup(weatherHtml.text, "html.parser")
 
-        try:
-            areaText = weatherSoup.find("h2", {"class": "title"}).text  # 날씨 지역 이름 가져오기
-            areaText = areaText.strip()
-            print(areaText)
-            self.area_out.setText(areaText)
+        areaText = weatherSoup.find("h2", {"class": "title"}).text  # 날씨 지역 이름 가져오기
+        areaText = areaText.strip()
+        print(areaText)
+        self.area_out.setText(areaText)
 
+        tempText = weatherSoup.find("div", {"class": "temperature_text"}).text
+        templist = tempText.split(" ")
+        tempText = templist[2][2:].strip()
+        print(tempText)
+        self.temp_out.setText(tempText)
+
+        try:
             todayWeatherText = weatherSoup.find("span", {"class": "weather before_slash"}).text.strip()
             self.setWeatherImg(todayWeatherText)
 
-            tempText = weatherSoup.find("div", {"class": "temperature_text"}).text
-            templist = tempText.split(" ")
-            tempText = templist[2][2:].strip()
-            print(tempText)
-            self.temp_out.setText(tempText)
 
             perceived_temp = weatherSoup.find("dd", {"class": "desc"}).text.strip()
             self.p_temp_out.setText(f"체감 {perceived_temp}")
@@ -60,8 +61,25 @@ class WeatherApp(QMainWindow, form_class):
             self.fdust_out.setText(dust1Info)
             self.sfdust_out.setText(dust2Info)
             print(dust1Info, dust2Info)
+
         except:
-            QMessageBox.warning(self, "입력 오류", f"{inputArea}의 날씨를 찾을 수 없습니다. 국내 지역을 다시 입력하세요.")
+            try:
+                todayWeatherRaw = weatherSoup.find("p", {"class": "summary"}).text.strip()
+                todayWeatherInfo = todayWeatherRaw.split(" ")
+
+                todayWeatherText = " ".join(todayWeatherInfo[:-2])
+                print(todayWeatherText)
+                self.setWeatherImg(todayWeatherText)
+
+                perceived_temp = str(todayWeatherInfo[-1])
+                self.p_temp_out.setText(f"체감 {perceived_temp}")
+
+                self.comprsn_yest.setText(f"날씨 비교 정보 없음")
+                self.fdust_out.setText("-")
+                self.sfdust_out.setText("-")
+
+            except:
+                QMessageBox.warning(self, "입력 오류", f"{inputArea}의 날씨를 찾을 수 없습니다. 올바른 지역을 다시 입력하세요.")
 
     def setWeatherImg(self, weatherText):    # 날씨에 따른 이미지 출력
         if weatherText == "맑음":

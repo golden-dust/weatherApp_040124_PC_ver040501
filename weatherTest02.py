@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup   # pip install beautifulsoup4
 # weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
 # 네이버에서 한남동 날씨로 검색한 결과 html 파일 가져오기
 
-weatherHtml = requests.get("https://search.naver.com/search.naver?&query=뉴욕+날씨")
+weatherHtml = requests.get("https://search.naver.com/search.naver?&query=발렌시아+날씨")
 # print(weatherHtml.text)
 
 weatherSoup = BeautifulSoup(weatherHtml.text, "html.parser")
