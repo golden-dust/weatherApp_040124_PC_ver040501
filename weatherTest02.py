@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup   # pip install beautifulsoup4
 # weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
 # 네이버에서 한남동 날씨로 검색한 결과 html 파일 가져오기
 
-weatherHtml = requests.get("https://search.naver.com/search.naver?&query=발렌시아+날씨")
+weatherHtml = requests.get("https://search.naver.com/search.naver?&query=뉴욕+날씨")
 # print(weatherHtml.text)
 
 weatherSoup = BeautifulSoup(weatherHtml.text, "html.parser")
@@ -51,6 +51,8 @@ if provider == "기상청":
     # 초미세먼지
     dust2Info = todayInfoText[1].find("span", {"class": "txt"}).text.strip()
 
+
+
     # 출력
     print("현재", tempText, todayWeatherText, "/", "체감", perceived_temp)
     print("어제보다", yesterdayTempText)
@@ -65,3 +67,11 @@ else:
     uvText = str(uv_info.split(" ")[-1])
     print(weatherInfo)
     print(uvText)
+
+    # 체감온도
+    sense_temp = weatherSoup.select("p.summary>span.text>em")[0].text
+    print("체감", sense_temp)
+
+    # 습도
+    humidityText = weatherSoup.select("div.temperature_info>dl.summary_list>dd.desc")[3].text
+    print(humidityText)

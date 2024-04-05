@@ -1,10 +1,13 @@
 import sys
 import requests
+import time
+import threading
 from bs4 import BeautifulSoup
 
 from PyQt5 import uic
 from PyQt5.QtWidgets import *
 from PyQt5.QtGui import *
+from PyQt5.QtCore import *  # 윈도우 설정
 
 form_class = uic.loadUiType("ui/weatherUi.ui")[0]
 # ui 폴더 내에 디자인된 ui 불러오기
@@ -19,6 +22,18 @@ class WeatherApp(QMainWindow, form_class):
         self.statusBar().showMessage("WEATHER SEARCH APP VER 0.7")
 
         self.search_btn.clicked.connect(self.search_weather)
+        self.search_btn.clicked.connect(self.refreshTimer)
+        self.area_input.returnPressed.connect(self.search_weather)  # 엔터키 누르면 실행
+        self.area_input.returnPressed.connect(self.refreshTimer)
+        self.setWindowFlags(Qt.WindowStaysOnTopHint)  # 윈도우를 항상 맨 위로 유지
+
+        threading.Timer(30, self.refreshTimer).start()
+        # threading.Timer(초, 함수).start()
+
+    def refreshTimer(self):
+        self.search_weather()
+        print("refresh")
+        threading.Timer(600, self.refreshTimer).start()
 
     def search_weather(self):
         inputArea = self.area_input.text()  # () 잊지 말기!

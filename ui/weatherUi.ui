@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
+    <width>510</width>
     <height>510</height>
    </rect>
   </property>
@@ -58,9 +58,9 @@
    <widget class="QLabel" name="area_out">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>100</x>
       <y>130</y>
-      <width>321</width>
+      <width>310</width>
       <height>31</height>
      </rect>
     </property>
@@ -134,7 +134,7 @@
      </font>
     </property>
     <property name="text">
-     <string>-</string>
+     <string>- ˚</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -145,7 +145,7 @@
      <rect>
       <x>100</x>
       <y>280</y>
-      <width>300</width>
+      <width>310</width>
       <height>31</height>
      </rect>
     </property>
@@ -194,7 +194,7 @@
    <widget class="QLabel" name="fdust_lb">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>30</x>
       <y>350</y>
       <width>90</width>
       <height>30</height>
@@ -222,7 +222,7 @@ color:rgb(88, 88, 88);</string>
    <widget class="QLabel" name="sfdust_lb">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>150</x>
       <y>350</y>
       <width>90</width>
       <height>30</height>
@@ -250,7 +250,7 @@ color:rgb(88, 88, 88);</string>
    <widget class="QLabel" name="fdust_out">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>30</x>
       <y>380</y>
       <width>90</width>
       <height>50</height>
@@ -278,7 +278,7 @@ color:rgb(216, 144, 0);</string>
    <widget class="QLabel" name="sfdust_out">
     <property name="geometry">
      <rect>
-      <x>210</x>
+      <x>150</x>
       <y>380</y>
       <width>90</width>
       <height>50</height>
@@ -306,7 +306,7 @@ color:rgb(197, 13, 40);</string>
    <widget class="QLabel" name="uv_out">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>270</x>
       <y>380</y>
       <width>90</width>
       <height>50</height>
@@ -334,7 +334,7 @@ color:rgb(0, 134, 0);</string>
    <widget class="QLabel" name="uv_lb">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>270</x>
       <y>350</y>
       <width>90</width>
       <height>30</height>
@@ -359,13 +359,69 @@ color:rgb(88, 88, 88);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLabel" name="hum_out">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>380</y>
+      <width>90</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>한컴 말랑말랑 Regular</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(199, 224, 255);
+color:rgb(57, 115, 173);</string>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="hum_lb">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>350</y>
+      <width>90</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>한컴 말랑말랑 Regular</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(199, 224, 255);
+color:rgb(88, 88, 88);</string>
+    </property>
+    <property name="text">
+     <string>습도</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>510</width>
      <height>21</height>
     </rect>
    </property>

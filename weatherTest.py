@@ -1,12 +1,12 @@
 import requests                 # pip install requests
 from bs4 import BeautifulSoup   # pip install beautifulsoup4
 
-inputArea = input("날씨를 조회하려는 지역을 입력하세요 : ")
+# inputArea = input("날씨를 조회하려는 지역을 입력하세요 : ")
 
-weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
+# weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
 # 네이버에서 한남동 날씨로 검색한 결과 html 파일 가져오기
 
-# weatherHtml = requests.get("https://search.naver.com/search.naver?&query=한남동+날씨")
+weatherHtml = requests.get("https://search.naver.com/search.naver?&query=한남동+날씨")
 
 # print(weatherHtml.text)
 
@@ -54,4 +54,9 @@ print("초미세먼지:", dust2Info)
 # 자외선
 uv_info = weatherSoup.find("li", {"class":"item_today level1"}).text.strip()
 uvText = str(uv_info.split(" ")[-1])
-print(uvText)
+print("자외선:", uvText)
+
+# 습도
+humidityInfo = weatherSoup.find("dl", {"class":"summary_list"}).text.strip().split(" ")
+humidityText = str(humidityInfo[5])
+print("습도:", humidityText)
