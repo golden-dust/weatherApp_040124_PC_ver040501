@@ -22,18 +22,18 @@ class WeatherApp(QMainWindow, form_class):
         self.statusBar().showMessage("WEATHER SEARCH APP VER 0.7")
 
         self.search_btn.clicked.connect(self.search_weather)
-        self.search_btn.clicked.connect(self.refreshTimer)
+        # self.search_btn.clicked.connect(self.refreshTimer)
         self.area_input.returnPressed.connect(self.search_weather)  # 엔터키 누르면 실행
-        self.area_input.returnPressed.connect(self.refreshTimer)
+        # self.area_input.returnPressed.connect(self.refreshTimer)
         self.setWindowFlags(Qt.WindowStaysOnTopHint)  # 윈도우를 항상 맨 위로 유지
 
-        threading.Timer(30, self.refreshTimer).start()
+        # threading.Timer(30, self.refreshTimer).start()
         # threading.Timer(초, 함수).start()
 
-    def refreshTimer(self):
-        self.search_weather()
-        print("refresh")
-        threading.Timer(600, self.refreshTimer).start()
+    # def refreshTimer(self):
+    #     self.search_weather()
+    #     print("refresh")
+    #     threading.Timer(600, self.refreshTimer).start()
 
     def search_weather(self):
         inputArea = self.area_input.text()  # () 잊지 말기!
@@ -41,18 +41,18 @@ class WeatherApp(QMainWindow, form_class):
         weatherHtml = requests.get(f"https://search.naver.com/search.naver?&query={inputArea}+날씨")
         weatherSoup = BeautifulSoup(weatherHtml.text, "html.parser")
 
-        areaText = weatherSoup.find("h2", {"class": "title"}).text  # 날씨 지역 이름 가져오기
-        areaText = areaText.strip()
-        print(areaText)
-        self.area_out.setText(areaText)
-
-        tempText = weatherSoup.find("div", {"class": "temperature_text"}).text
-        templist = tempText.split(" ")
-        tempText = templist[2][2:].strip()
-        print(tempText)
-        self.temp_out.setText(tempText)
-
         try:
+            areaText = weatherSoup.find("h2", {"class": "title"}).text  # 날씨 지역 이름 가져오기
+            areaText = areaText.strip()
+            print(areaText)
+            self.area_out.setText(areaText)
+
+            tempText = weatherSoup.find("div", {"class": "temperature_text"}).text
+            templist = tempText.split(" ")
+            tempText = templist[2][2:].strip()
+            print(tempText)
+            self.temp_out.setText(tempText)
+
             todayWeatherText = weatherSoup.find("span", {"class": "weather before_slash"}).text.strip()
             self.setWeatherImg(todayWeatherText)
             print(todayWeatherText)
@@ -96,6 +96,17 @@ class WeatherApp(QMainWindow, form_class):
             print(humidityText)
         except:
             try:
+                areaText = weatherSoup.find("h2", {"class": "title"}).text  # 날씨 지역 이름 가져오기
+                areaText = areaText.strip()
+                print(areaText)
+                self.area_out.setText(areaText)
+
+                tempText = weatherSoup.find("div", {"class": "temperature_text"}).text
+                templist = tempText.split(" ")
+                tempText = templist[2][2:].strip()
+                print(tempText)
+                self.temp_out.setText(tempText)
+
                 todayWeatherRaw = weatherSoup.find("p", {"class": "summary"}).text.strip()
                 todayWeatherInfo = todayWeatherRaw.split(" ")
 
