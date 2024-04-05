@@ -61,4 +61,7 @@ if provider == "기상청":
 
 else:
     weatherInfo = weatherSoup.find("div",{"class":"temperature_text"}).text.strip()
+    uv_info = weatherSoup.find("dl", {"class":"summary_list"}).text.strip()
+    uvText = str(uv_info.split(" ")[-1])
     print(weatherInfo)
+    print(uvText)

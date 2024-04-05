@@ -62,6 +62,12 @@ class WeatherApp(QMainWindow, form_class):
             self.sfdust_out.setText(dust2Info)
             print(dust1Info, dust2Info)
 
+            # 자외선
+            uv_info = weatherSoup.find("li", {"class": "item_today level1"}).text.strip()
+            uvText = str(uv_info.split(" ")[-1])
+            print(uvText)
+            self.uv_out.setText(uvText)
+
         except:
             try:
                 todayWeatherRaw = weatherSoup.find("p", {"class": "summary"}).text.strip()
@@ -73,6 +79,10 @@ class WeatherApp(QMainWindow, form_class):
 
                 perceived_temp = str(todayWeatherInfo[-1])
                 self.p_temp_out.setText(f"체감 {perceived_temp}")
+
+                uv_info = weatherSoup.find("dl", {"class": "summary_list"}).text.strip()
+                uvText = str(uv_info.split(" ")[-1])
+                self.uv_out.setText(uvText)
 
                 self.comprsn_yest.setText(f"날씨 비교 정보 없음")
                 self.fdust_out.setText("-")

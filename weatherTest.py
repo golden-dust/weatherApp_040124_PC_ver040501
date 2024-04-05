@@ -50,3 +50,8 @@ print("미세먼지:", dust1Info)
 # 초미세먼지
 dust2Info = todayInfoText[1].find("span", {"class":"txt"}).text.strip()
 print("초미세먼지:", dust2Info)
+
+# 자외선
+uv_info = weatherSoup.find("li", {"class":"item_today level1"}).text.strip()
+uvText = str(uv_info.split(" ")[-1])
+print(uvText)

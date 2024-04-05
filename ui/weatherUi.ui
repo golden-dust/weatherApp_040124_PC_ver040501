@@ -19,7 +19,7 @@
      <rect>
       <x>50</x>
       <y>40</y>
-      <width>321</width>
+      <width>391</width>
       <height>30</height>
      </rect>
     </property>
@@ -38,7 +38,7 @@
    <widget class="QPushButton" name="search_btn">
     <property name="geometry">
      <rect>
-      <x>370</x>
+      <x>380</x>
       <y>39</y>
       <width>75</width>
       <height>32</height>
@@ -104,13 +104,13 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>157</y>
+      <y>160</y>
       <width>81</width>
       <height>120</height>
      </rect>
     </property>
     <property name="text">
-     <string>날씨 이미지</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -134,7 +134,7 @@
      </font>
     </property>
     <property name="text">
-     <string>- 00.0 ˚</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -143,7 +143,7 @@
    <widget class="QLabel" name="comprsn_yest">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>100</x>
       <y>280</y>
       <width>300</width>
       <height>31</height>
@@ -194,7 +194,7 @@
    <widget class="QLabel" name="fdust_lb">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>90</x>
       <y>350</y>
       <width>90</width>
       <height>30</height>
@@ -222,7 +222,7 @@ color:rgb(88, 88, 88);</string>
    <widget class="QLabel" name="sfdust_lb">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>210</x>
       <y>350</y>
       <width>90</width>
       <height>30</height>
@@ -250,7 +250,7 @@ color:rgb(88, 88, 88);</string>
    <widget class="QLabel" name="fdust_out">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>90</x>
       <y>380</y>
       <width>90</width>
       <height>50</height>
@@ -265,11 +265,11 @@ color:rgb(88, 88, 88);</string>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgb(255, 223, 158);
-color:rgb(131, 87, 65);</string>
+     <string notr="true">background-color: rgb(255, 223, 158);
+color:rgb(216, 144, 0);</string>
     </property>
     <property name="text">
-     <string>미세먼지</string>
+     <string>-</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -278,7 +278,7 @@ color:rgb(131, 87, 65);</string>
    <widget class="QLabel" name="sfdust_out">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>210</x>
       <y>380</y>
       <width>90</width>
       <height>50</height>
@@ -297,7 +297,63 @@ color:rgb(131, 87, 65);</string>
 color:rgb(197, 13, 40);</string>
     </property>
     <property name="text">
-     <string>초미세먼지</string>
+     <string>-</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="uv_out">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>380</y>
+      <width>90</width>
+      <height>50</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>한컴 말랑말랑 Regular</family>
+      <pointsize>11</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(205, 255, 220);
+color:rgb(0, 134, 0);</string>
+    </property>
+    <property name="text">
+     <string>-</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="uv_lb">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>350</y>
+      <width>90</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>한컴 말랑말랑 Regular</family>
+      <pointsize>11</pointsize>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(205, 255, 220);
+color:rgb(88, 88, 88);</string>
+    </property>
+    <property name="text">
+     <string>자외선</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
